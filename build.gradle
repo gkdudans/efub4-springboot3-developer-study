@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'me.gkdudans'
+version = '1.0'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    //Spring MVC를 사용해서 RESTful 웹 서비르르 개발할 때 필요한 의존성 모음
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //스프링 애플리케이션 테스트를 위한 의존성 모음
+}
+
+test {
+    useJUnitPlatform()
+}
