@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/efub4-springboot3-developer-study.main.iml" filepath="$PROJECT_DIR$/.idea/modules/efub4-springboot3-developer-study.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/efub4-springboot3-developer-study.test.iml" filepath="$PROJECT_DIR$/.idea/modules/efub4-springboot3-developer-study.test.iml" />
     </modules>
   </component>
