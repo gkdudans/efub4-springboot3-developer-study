@@ -3,7 +3,7 @@ package me.gkdudans.springbootdeveloper.controller;
 import lombok.RequiredArgsConstructor;
 import me.gkdudans.springbootdeveloper.domain.Article;
 import me.gkdudans.springbootdeveloper.dto.AddArticleRequest;
-import me.gkdudans.springbootdeveloper.dto.ArticleResponse;
+import me.gkdudans.springbootdeveloper.dto.ArticleViewResponse;
 import me.gkdudans.springbootdeveloper.dto.UpdateArticleRequest;
 import me.gkdudans.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
@@ -31,10 +31,10 @@ public class BlogApiController {
     }
 
     @GetMapping("/api/articles")
-    public ResponseEntity<List<ArticleResponse>> findAllArticles(){
-        List<ArticleResponse> articles = blogService.findAll()
+    public ResponseEntity<List<ArticleViewResponse>> findAllArticles(){
+        List<ArticleViewResponse> articles = blogService.findAll()
                 .stream()
-                .map(ArticleResponse::new)
+                .map(ArticleViewResponse::new)
                 .toList();
         return ResponseEntity.ok()
                 .body(articles);
@@ -42,11 +42,11 @@ public class BlogApiController {
 
     @GetMapping("/api/articles/{id}")
     // URL 경로에서 값 추출
-    public ResponseEntity<ArticleResponse> findArticle(@PathVariable long id) {
+    public ResponseEntity<ArticleViewResponse> findArticle(@PathVariable long id) {
         Article article = blogService.findById(id);
 
         return ResponseEntity.ok()
-                .body(new ArticleResponse(article));
+                .body(new ArticleViewResponse(article));
     }
 
     @DeleteMapping("/api/articles/{id}")
