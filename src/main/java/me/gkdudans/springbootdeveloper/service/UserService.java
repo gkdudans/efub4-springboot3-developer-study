@@ -20,8 +20,10 @@ public class UserService {
                 .build()).getId();
     }
 
+    // 9장: 토큰 API 구현하기
     public User findById(Long userId){
         return userRepository.findById(userId)
                .orElseThrow(() -> new IllegalArgumentException("not found " + userId));
     }
+
 }
