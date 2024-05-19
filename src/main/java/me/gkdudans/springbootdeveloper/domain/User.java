@@ -29,10 +29,21 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    // 10장 OAuth2: 관련 키 저장
+    @Column(name = "nickname", unique = true)
+    private String nickname;
+
     @Builder
-    public User(String email, String password, String auth) {
+    public User(String email, String password, String nickname) {
         this.email = email;
         this.password = password;
+        this.nickname = nickname; // 10장: 생성자에 추가
+    }
+
+    // 10장: 사용자 이름 변경
+    public User update(String nickname){
+        this.nickname = nickname;
+        return this;
     }
 
     @Override //권한 반환

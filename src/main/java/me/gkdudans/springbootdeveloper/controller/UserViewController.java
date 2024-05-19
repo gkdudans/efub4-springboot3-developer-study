@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UserViewController {
     @GetMapping("/login")
     public String login() {
-        return "login"; // -> login.html 반환
+        return "oauthLogin"; // 10장: oauthlogin으로 변경
     }
 
     @GetMapping("/signup")
