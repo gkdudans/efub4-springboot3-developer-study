@@ -56,7 +56,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
                 .orElse(new RefreshToken(userId, newRefreshToken));
         refreshTokenRepository.save(refreshToken);
     }
-    // 생성된 리프레시 토큰을 전달받아 데이터베이스에 저장
+    // 생성된 리프레시 토큰을 쿠키에 저장
     private void addRefreshTokenToCookie(HttpServletRequest request, HttpServletResponse response, String refreshToken) {
         int cookieMaxAge = (int) REFRESH_TOKEN_DURATION.toSeconds();
         CookieUtil.deleteCookie(request, response, REFRESH_TOKEN_COOKIE_NAME);
