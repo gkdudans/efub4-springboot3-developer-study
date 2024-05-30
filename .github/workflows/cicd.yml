@@ -30,7 +30,8 @@ jobs:
           utcOffset: "+09:00"
 
       - name: Set artifact
-        run: echo "artifact=$(ls ./build/libs)" >> $GITHUB_ENV
+        id: set-artifact
+        run: echo "artifact=$(ls ./build/libs/*.jar)" >> $GITHUB_ENV
 
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v22
@@ -39,6 +40,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: SpringBootDeveloperApplication
           environment_name: SpringBootDeveloperApplication-env
-          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          version_label: github-action-${{ steps.current-time.outputs.formattedTime }}
           region: ap-northeast-2
-          deployment_package: ./build/libs/${{env.artifact}}
+          deployment_package: ${{ env.artifact }}
